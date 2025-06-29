@@ -1,7 +1,7 @@
 name: Push users and transactions data to MongoDB
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Every day at midnight
+  #schedule:
+  #  - cron: '0 0 * * *'  # Every day at midnight
   workflow_dispatch:
 
 jobs:
@@ -21,10 +21,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirement.txt
+          pip install -r requirements.txt
 
       - name: Run data generation script
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
-          python app.py
+          python push2mongodb.py

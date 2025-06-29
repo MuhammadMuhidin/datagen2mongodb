@@ -9,7 +9,7 @@ class DataGenerator:
             self.db = self.client["datagen"]
             self.collection_users = self.db["user_data"]
             self.collection_transactions = self.db["transaction_data"]
-            self.fake = Faker()
+            self.fake = Faker('id_ID')
 
         def connect_to_mongodb(self):
             try:

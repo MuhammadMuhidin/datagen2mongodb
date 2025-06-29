@@ -1,8 +1,8 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import sys, os
 from data_generators.user_transaction import UserTransactionGenerator
 from pymongo import MongoClient
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def insert_to_mongodb(data, collection):
     """
@@ -35,6 +35,6 @@ if __name__ == "__main__":
     # Insert transaction data into MongoDB
     insert_to_mongodb(transaction_data, db['transactions_data'])
     
-    print("Data generation and insertion completed.")
     mongo_client.close()
+    print("connection closed.")
     # Close the MongoDB connection

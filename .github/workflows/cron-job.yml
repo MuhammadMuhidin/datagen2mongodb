@@ -27,4 +27,4 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
-          python push2mongodb.py
+          python run_jobs/gen_user_transaction_mongodb.py

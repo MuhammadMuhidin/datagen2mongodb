@@ -1,4 +1,4 @@
-name: push data users and transactions to MongoDB
+name: Push users and transactions data to MongoDB
 on:
   schedule:
     - cron: '0 0 * * *'  # Every day at midnight
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pymongo==4.13.2 Faker==37.4.0
+          pip install requirement.txt
 
       - name: Run data generation script
         env:

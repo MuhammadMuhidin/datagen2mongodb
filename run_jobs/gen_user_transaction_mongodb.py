@@ -25,8 +25,8 @@ if __name__ == "__main__":
     db = mongo_client['datagen']  # Database name
     
     # Insert user data into MongoDB
-    insert_to_mongodb(user_data, db['users_data'])
-    insert_to_mongodb(transaction_data, db['transactions_data'])
+    insert_to_mongodb(user_data, db['users'])
+    insert_to_mongodb(transaction_data, db['transactions'])
 
     # Close the MongoDB connection
     mongo_client.close()

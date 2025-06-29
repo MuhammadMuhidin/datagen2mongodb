@@ -68,11 +68,11 @@ class DataGenerator:
                     time.sleep(1)
                 usr_with_trx_inserted += 1
 
-        print("\n=== Summary (this session only) ===")
-        print(f"Total users inserted: {usr_trx_inserted}")
-        print(f"Total transactions inserted: {trx_inserted}")
-        print(f"Users with transactions: {usr_with_trx_inserted}")
-        print(f"Users without transactions: {usr_without_trx_inserted}")
+            print("\n=== Summary (this session only) ===")
+            print(f"Total users inserted: {usr_trx_inserted}")
+            print(f"Total transactions inserted: {trx_inserted}")
+            print(f"Users with transactions: {usr_with_trx_inserted}")
+            print(f"Users without transactions: {usr_without_trx_inserted}")
 
         def close_connection(self):
             self.client.close()

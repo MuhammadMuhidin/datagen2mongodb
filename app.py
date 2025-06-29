@@ -43,12 +43,19 @@ class DataGenerator:
             print("Starting data generation...")
 
             max_users = random.randint(1, 50)  # Randomly choose number of users to generate
+            usr_trx_inserted = 0
+            trx_inserted = 0
+            usr_with_trx_inserted = 0
+            usr_without_trx_inserted = 0
+                
             for i in range(1, max_users + 1):
                 user_data = self.generate_users()
                 self.collection_users.insert_one(user_data)
+                usr_trx_inserted += 1
                 print(f"{i}/{max_users} Inserted user: {user_data['name']}")
 
                 if random.random() < 0.3:  # 30% chance to skip transaction generation for this user
+                    usr_without_trx_inserted += 1
                     print("No transactions for this user.")
                     continue
                 
@@ -56,8 +63,16 @@ class DataGenerator:
                 for j in range(1, max_transactions + 1):
                     transaction_data = self.generate_transactions(user_data["user_id"])
                     self.collection_transactions.insert_one(transaction_data)
+                    trx_inserted += 1
                     print(f"Inserted {j}/{max_transactions} transaction for user {user_data['name']}")
                     time.sleep(1)
+                usr_with_trx_inserted += 1
+
+        print("\n=== Summary (this session only) ===")
+        print(f"Total users inserted: {usr_trx_inserted}")
+        print(f"Total transactions inserted: {trx_inserted}")
+        print(f"Users with transactions: {usr_with_trx_inserted}")
+        print(f"Users without transactions: {usr_without_trx_inserted}")
 
         def close_connection(self):
             self.client.close()

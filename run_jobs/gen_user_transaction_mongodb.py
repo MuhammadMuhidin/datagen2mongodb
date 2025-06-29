@@ -20,7 +20,7 @@ if __name__ == "__main__":
     transaction_data = generator.get_transaction_data()
     
     # MongoDB connection setup
-    mongo_client = os.getenv('MONGODB_URI')
+    mongo_client = MongoClient(os.getenv('MONGODB_URI'))
     print("MongoDB is connected successfully, ready to insert data.")
     db = mongo_client['datagen']  # Database name
     

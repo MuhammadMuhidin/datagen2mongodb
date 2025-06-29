@@ -32,7 +32,7 @@ class UserTransactionGenerator(BaseGenerator):
 
             if random.random() < 0.5:  # 50% chance to skip transaction generation for this user
                 usr_without_trx_inserted += 1
-                print(f'No data transaction found, skipping to next user.')
+                print(f'No data transaction found.')
                 continue
             
             max_transactions = random.randint(1, 10)  # Randomly choose number of transactions to generate for this user
@@ -51,11 +51,13 @@ class UserTransactionGenerator(BaseGenerator):
                 time.sleep(1)  # Simulate a delay for transaction generation
             usr_with_trx_inserted += 1
 
-        print("\n=== Summary (this session only) ===")
+        print("\n=== Summary Generation data (this session only) ===")
         print(f"Total users inserted: {usr_trx_inserted}")
         print(f"Total transactions inserted: {trx_inserted}")
         print(f"Users with transactions: {usr_with_trx_inserted}")
         print(f"Users without transactions: {usr_without_trx_inserted}")
+        print("=== End of Summary ===")
+        print("Data generation completed successfully, ready to connect to MongoDB.\n")
 
     def get_user_data(self):
         return(self.users)

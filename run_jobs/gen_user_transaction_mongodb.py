@@ -1,8 +1,8 @@
 import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from data_generators.user_transaction import UserTransactionGenerator
 from pymongo import MongoClient
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def insert_to_mongodb(data, collection):
     """
@@ -10,7 +10,7 @@ def insert_to_mongodb(data, collection):
     """
     if data:
         collection.insert_many(data)
-        print(f"Inserted {len(data)} records into {collection.name} collection done!")
+        print(f"Insert {collection.name} done")
     else:
         print("No data to insert.")
 
@@ -27,6 +27,7 @@ if __name__ == "__main__":
     
     # MongoDB connection setup
     mongo_client = MongoClient('mongodb+srv://muhammadmuhidin222:Muhidin94@cluster0.usomldt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    print("MongoDB is connected successfully, ready to insert data.")
     db = mongo_client['datagen']  # Database name
     
     # Insert user data into MongoDB
@@ -36,5 +37,5 @@ if __name__ == "__main__":
     insert_to_mongodb(transaction_data, db['transactions_data'])
     
     mongo_client.close()
-    print("connection closed.")
+    print("MongoDB is closed succwssfully, all data inserted.")
     # Close the MongoDB connection

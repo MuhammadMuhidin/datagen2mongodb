@@ -1,7 +1,7 @@
-name: Push users and transactions data to MongoDB
+name: Generate and Push feeding raw data
 on:
   #schedule:
-  #  - cron: '0 0 * * *'  # Every day at midnight
+  #  - cron: '0 0 * * *'  # Every day at midnight UTC
   workflow_dispatch:
 
 jobs:
@@ -27,4 +27,4 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
-          python run_jobs/gen_user_transaction_mongodb.py
+          python run_jobs/*.py

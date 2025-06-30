@@ -45,8 +45,7 @@ class UserTransactionGenerator(BaseGenerator):
                 self.transactions.append(transaction)
                 trx_inserted += 1
                 usr_with_trx_inserted += 1
-        
-        print("Data generation completed successfully, now ready to connect to MongoDB.")
+                
         print("=== Summary Generation data (this session only) ===")
         print(f"Total users inserted: {usr_trx_inserted}")
         print(f"Total transactions inserted: {trx_inserted}")

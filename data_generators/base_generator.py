@@ -30,11 +30,21 @@ class BaseGenerator:
         df.to_sql(table_name, conn, if_exists='replace', index=False)
         conn.close()
 
-    def to_mongodb(self, collection_name, mongo_client):
+    def to_mongodb(self, database_name, collection_name, mongodb_uri, data):
         """
         Save the generated data to a MongoDB collection.
         """
-        df = pd.DataFrame(self.data)
-        collection = mongo_client[collection_name]
-        collection.insert_many(df.to_dict('records'))
-    
+        client = MongoClient(mongodb_uri)
+        try:
+            client.admin.command('ping')  # Check connection
+            db = client[database_name]
+            collection = db[collection_name]
+            if data:
+                collection.insert_many(data)
+                print(f"Insert {collection_name} done.")
+            else:
+                print("No data to insert.")
+        except Exception as e:
+            print(f"Error connecting to MongoDB: {e}")
+        finally:
+            client.close()

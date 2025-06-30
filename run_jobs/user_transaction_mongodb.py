@@ -8,7 +8,7 @@ def main():
     generator.generate() # Generate data user and transaction
     usrdata = generator.get_user_data()
     trxdata = generator.get_transaction_data()
-    mongodb_uri = 'mongodb+srv://muhammadmuhidin222:Muhidin94@cluster0.usomldt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+    mongodb_uri = os.getenv('MONGODB_URI')
 
     if usrdata:
         generator.to_mongodb('datagen','user',mongodb_uri, usrdata)

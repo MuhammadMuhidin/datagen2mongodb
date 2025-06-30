@@ -16,9 +16,10 @@ def main():
         generator.to_sqlite('products.db', 'products', prod_data)
 
     if rev_data:
-        generator.to_csv_gdrive('reviews.csv', rev_data)
-        generator.to_parquet_gdrive('reviews.parquet', rev_data)
-        generator.to_sqlite_gdrive('reviews.db', 'reviews', rev_data)
+        generator.to_csv('reviews.csv', rev_data)
+        generator.to_parquet('reviews.parquet', rev_data)
+        generator.to_sqlite('reviews.db', 'reviews', rev_data)
+    
     else:
         print("No review data generated found.")
 

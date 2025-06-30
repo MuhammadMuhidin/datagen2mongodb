@@ -11,14 +11,14 @@ def main():
     gdrive_uri = os.getenv('GDRIVE_URI')
 
     if prod_data:
-        generator.to_csv_gdrive('products.csv', gdrive_uri, prod_data)
-        generator.to_parquet_gdrive('products.parquet', gdrive_uri, prod_data)
-        generator.to_sqlite_gdrive('products.db', 'products', gdrive_uri, prod_data)
+        generator.to_csv('products.csv', prod_data)
+        generator.to_parquet('products.parquet', prod_data)
+        generator.to_sqlite('products.db', 'products', prod_data)
 
     if rev_data:
-        generator.to_csv_gdrive('reviews.csv', gdrive_uri, rev_data)
-        generator.to_parquet_gdrive('reviews.parquet', gdrive_uri, rev_data)
-        generator.to_sqlite_gdrive('reviews.db', 'reviews', gdrive_uri, rev_data)
+        generator.to_csv_gdrive('reviews.csv', rev_data)
+        generator.to_parquet_gdrive('reviews.parquet', rev_data)
+        generator.to_sqlite_gdrive('reviews.db', 'reviews', rev_data)
     else:
         print("No review data generated found.")
 

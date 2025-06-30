@@ -1,4 +1,4 @@
-import random, time
+import random
 from faker import Faker
 from data_generators.base_generator import BaseGenerator
 
@@ -10,7 +10,7 @@ class UserTransactionGenerator(BaseGenerator):
     
     def generate(self):
 
-        usr_trx_inserted = 0
+        usr_inserted = 0
         trx_inserted = 0
         usr_with_trx_inserted = 0
         usr_without_trx_inserted = 0
@@ -26,7 +26,7 @@ class UserTransactionGenerator(BaseGenerator):
                 "date_of_birth": self.fake.date_of_birth().isoformat()
             }
             self.users.append(user)
-            usr_trx_inserted += 1
+            usr_inserted += 1
 
             if random.random() < 0.5:  # 50% chance to skip transaction generation for this user
                 usr_without_trx_inserted += 1
@@ -44,10 +44,10 @@ class UserTransactionGenerator(BaseGenerator):
                 }
                 self.transactions.append(transaction)
                 trx_inserted += 1
-                usr_with_trx_inserted += 1
+            usr_with_trx_inserted += 1
                 
         print("=== Summary Generation data (this session only) ===")
-        print(f"Total users inserted: {usr_trx_inserted}")
+        print(f"Total users inserted: {usr_inserted}")
         print(f"Total transactions inserted: {trx_inserted}")
         print(f"Users with transactions: {usr_with_trx_inserted}")
         print(f"Users without transactions: {usr_without_trx_inserted}")

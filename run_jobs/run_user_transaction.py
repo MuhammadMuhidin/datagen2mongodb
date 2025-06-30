@@ -1,7 +1,7 @@
 import sys, os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from data_generators.user_transaction import UserTransactionGenerator
+from data_generators.gen_user_transaction import UserTransactionGenerator
 
 def main():
     generator = UserTransactionGenerator()
@@ -12,6 +12,7 @@ def main():
 
     if usrdata:
         generator.to_mongodb('datagen','user',mongodb_uri, usrdata)
+    if trxdata:
         generator.to_mongodb('datagen','transaction',mongodb_uri, trxdata)
     else:
         print("No data generated found.")

@@ -7,21 +7,21 @@ class BaseGenerator:
     def __init__(self):
         self.data = []
 
-    def to_csv(self, filename):
+    def to_csv_gdrive(self, filename, gdrive_uri, data):
         """
         Save the generated data to a CSV file.
         """
         df = pd.DataFrame(self.data)
         df.to_csv(filename, index=False)
 
-    def to_parquet(self, filename):
+    def to_parquet_gdrive(self, filename, gdrive_uri, data):
         """
         Save the generated data to a Parquet file.
         """
         df = pd.DataFrame(self.data)
         df.to_parquet(filename, index=False)
 
-    def to_sqlite(self, db_name, table_name):
+    def to_sqlite_gdrive(self, db_name, table_name, gdrive_uri, data):
         """
         Save the generated data to a SQLite database.
         """
